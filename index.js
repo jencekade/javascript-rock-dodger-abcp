@@ -163,7 +163,8 @@ function createRock(x) {
 
 function endGame() {
   clearInterval(gameInterval);
-  ROCKS.forEach(function(rock) {rock.remove();
+  ROCKS.forEach(function(eachRock) {
+    eachRock.remove();
   });
   window.removeEventListener('keydown', moveDodger);
   alert(`YOU LOSE!`);
@@ -172,7 +173,6 @@ function endGame() {
 
 
 function moveDodger(e) {
-
   // implement me!
   if (e.which === LEFT_ARROW) {
     moveDodgerLeft();
@@ -191,7 +191,6 @@ function moveDodger(e) {
    * we've declared for you above.)
    * And be sure to use the functions declared below!
    */
-
 }
 
 
@@ -210,7 +209,6 @@ function moveDodgerLeft() {
 }
 
 
-
 function moveDodgerRight() {
   // implement me!
   const rightPosition = positionToInteger(DODGER.style.left);
@@ -227,35 +225,20 @@ function moveDodgerRight() {
 
 
 /**
-
  * @param {string} p The position property
-
  * @returns {number} The position as an integer (without 'px')
-
  */
 
 function positionToInteger(p) {
-
   return parseInt(p.split('px')[0]) || 0
-
 }
 
 
 
 function start() {
-
   window.addEventListener('keydown', moveDodger)
-
-
-
   START.style.display = 'none'
-
-
-
   gameInterval = setInterval(function() {
-
     createRock(Math.floor(Math.random() * (GAME_WIDTH - 20)))
-
   }, 1000)
-
 }
